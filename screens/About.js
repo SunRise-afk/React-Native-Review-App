@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { globalStyles } from "../styles/global";
 
-
 export const About = () => {
   return (
     <View style={globalStyles.container}>
@@ -11,6 +10,4 @@ export const About = () => {
   );
 };
 
-const styles = StyleSheet.create({
- 
-});
+const styles = StyleSheet.create({});

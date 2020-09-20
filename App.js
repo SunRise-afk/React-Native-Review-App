@@ -8,6 +8,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { ReviewDetails } from "./screens/ReviewDetails";
 import { About } from "./screens/About";
+import { Header } from "./shared/Header";
 
 const getFonts = () => {
   return Font.loadAsync({
@@ -25,16 +26,20 @@ const HomeStack = () => {
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{
-          title: "Game Reviewer",
-          headerStyle: {
-            backgroundColor: "#8259ab",
-            height: 60,
-          },
-          headerTintColor: "#eee",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
+        options={({ navigation }) => {
+          return {
+            headerTitle: () => (
+              <Header navigation={navigation} title="Game Reviewer" />
+            ),
+            headerStyle: {
+              backgroundColor: "#8259ab",
+              height: 60,
+            },
+            headerTintColor: "#eee",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          };
         }}
       />
       <Stack.Screen
@@ -56,6 +61,32 @@ const HomeStack = () => {
   );
 };
 
+const AboutStackNav = createStackNavigator();
+const AboutStack = () => {
+  return (
+    <AboutStackNav.Navigator>
+      <AboutStackNav.Screen
+        name="About"
+        component={About}
+        options={({ navigation }) => {
+          return {
+            headerTitle: () => (
+              <Header navigation={navigation} title="About Game Reviewer" />
+            ),
+            headerStyle: {
+              backgroundColor: "#8259ab",
+              height: 60,
+            },
+            headerTintColor: "#eee",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          };
+        }}
+      />
+    </AboutStackNav.Navigator>
+  );
+};
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
@@ -64,7 +95,7 @@ export default function App() {
       <NavigationContainer>
         <Drawer.Navigator>
           <Drawer.Screen name="Home" component={HomeStack}></Drawer.Screen>
-          <Drawer.Screen name="About" component={About}></Drawer.Screen>
+          <Drawer.Screen name="About" component={AboutStack}></Drawer.Screen>
         </Drawer.Navigator>
       </NavigationContainer>
     );
