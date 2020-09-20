@@ -1,11 +1,16 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Button } from "react-native";
 import { globalStyles } from "../styles/global";
 
-export const ReviewDetails = () => {
+export const ReviewDetails = (props) => {
+  const pressHandler = () => {
+    props.navigation.goBack();
+  };
   return (
     <View style={globalStyles.container}>
-      <Text style={globalStyles.titleText}>ReviewDetails Screen</Text>
+      <Text style={globalStyles.titleText}>{props.route.params.title}</Text>
+      <Text style={globalStyles.titleText}>{props.route.params.body}</Text>
+      <Text style={globalStyles.titleText}>{props.route.params.rating}</Text>
     </View>
   );
 };
