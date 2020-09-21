@@ -48,10 +48,10 @@ const HomeStack = () => {
         options={({ route }) => ({
           title: route.params.title,
           headerStyle: {
-            backgroundColor: "#8259ab",
+            backgroundColor: "#eee",
             height: 60,
           },
-          headerTintColor: "#eee",
+          headerTintColor: "#333",
           headerTitleStyle: {
             fontWeight: "bold",
           },
@@ -71,10 +71,10 @@ const AboutStack = () => {
         options={({ navigation }) => {
           return {
             headerTitle: () => (
-              <Header navigation={navigation} title="About Game Reviewer" />
+              <Header navigation={navigation} title="About GR" />
             ),
             headerStyle: {
-              backgroundColor: "#8259ab",
+              backgroundColor: "#eee",
               height: 60,
             },
             headerTintColor: "#eee",

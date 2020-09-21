@@ -30,8 +30,11 @@ export const Header = (props) => {
 
 const styles = StyleSheet.create({
   header: {
-    width: "100%",
-    height: "100%",
+    // width: "100%",
+    // height: "100%",
+    flex: 1,
+    marginHorizontal: -15,
+    paddingVertical: 5,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",

@@ -1,9 +1,18 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Button, Modal } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Button,
+  Modal,
+  Keyboard,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { Card } from "../shared/Card";
 import { globalStyles } from "../styles/global";
 import { MaterialIcons } from "@expo/vector-icons";
+import { ReviewForm } from "./ReviewForm";
 
 export const Home = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -27,18 +36,27 @@ export const Home = (props) => {
       key: "3",
     },
   ]);
+  const addReview = (review) => {
+    review.key = Date.now().toString();
+    setReviews((prev) => {
+      return [review, ...prev];
+    });
+    setModalOpen(false);
+  };
   return (
     <View style={globalStyles.container}>
       <Modal visible={modalOpen} animationType="fade">
-        <View style={styles.modalContent}>
-          <MaterialIcons
-            name="close"
-            size={24}
-            onPress={() => setModalOpen(false)}
-            style={{ ...styles.modalToggle, ...styles.modalClose }}
-          />
-          <Text>Hello</Text>
-        </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.modalContent}>
+            <MaterialIcons
+              name="close"
+              size={24}
+              onPress={() => setModalOpen(false)}
+              style={{ ...styles.modalToggle, ...styles.modalClose }}
+            />
+            <ReviewForm addReview={addReview}></ReviewForm>
+          </View>
+        </TouchableWithoutFeedback>
       </Modal>
 
       <MaterialIcons
