@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
+import { Card } from "../shared/Card";
 import { globalStyles } from "../styles/global";
 
 export const ReviewDetails = (props) => {
@@ -8,9 +9,11 @@ export const ReviewDetails = (props) => {
   };
   return (
     <View style={globalStyles.container}>
-      <Text style={globalStyles.titleText}>{props.route.params.title}</Text>
-      <Text style={globalStyles.titleText}>{props.route.params.body}</Text>
-      <Text style={globalStyles.titleText}>{props.route.params.rating}</Text>
+      <Card>
+        <Text style={globalStyles.titleText}>{props.route.params.title}</Text>
+        <Text style={globalStyles.titleText}>{props.route.params.body}</Text>
+        <Text style={globalStyles.titleText}>{props.route.params.rating}</Text>
+      </Card>
     </View>
   );
 };
