@@ -32,7 +32,7 @@ const HomeStack = () => {
               <Header navigation={navigation} title="Game Reviewer" />
             ),
             headerStyle: {
-              backgroundColor: "#8259ab",
+              backgroundColor: "#fff",
               height: 60,
             },
             headerTintColor: "#eee",

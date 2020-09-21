@@ -1,23 +1,30 @@
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
 
 export const Header = (props) => {
   const openMenu = () => {
     props.navigation.openDrawer();
   };
   return (
-    <View style={styles.header}>
+    <ImageBackground
+      source={require("../assets/game_bg.png")}
+      style={styles.header}
+    >
       <MaterialIcons
         name="menu"
         size={28}
         onPress={openMenu}
         style={styles.icon}
       />
-      <View>
+      <View style={styles.headerTitle}>
+        <Image
+          source={require("../assets/heart_logo.png")}
+          style={styles.headerImage}
+        />
         <Text style={styles.headerText}>{props.title}</Text>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -28,16 +35,25 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#111",
   },
   headerText: {
     fontWeight: "bold",
     fontSize: 25,
-    color: "#eee",
+    color: "#333",
     letterSpacing: 1,
   },
   icon: {
     position: "absolute",
-    color: "#eee",
+    color: "#333",
     left: 10,
+  },
+  headerTitle: {
+    flexDirection: "row",
+  },
+  headerImage: {
+    width: 26,
+    height: 26,
+    marginHorizontal: 10,
   },
 });
